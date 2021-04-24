@@ -107,7 +107,7 @@ tags = {
 
 resource "aws_network_interface" "webservernic" {
   subnet_id = aws_subnet.subnet1.id
-  private_ips = ["10.0.1.50"]
+  private_ips = ["private ip which you want to give"]
   security_groups = [aws_security_group.allow.id ]
 }
 # 8. Assign an elastic ip to the network interface created in step 7.
@@ -115,7 +115,7 @@ resource "aws_network_interface" "webservernic" {
 resource "aws_eip" one {
   vpc =true
   network_interface = aws_network_interface.webservernic.id
-  associate_with_private_ip = "10.0.1.50"
+  associate_with_private_ip = "above private ip"
   depends_on = [aws_internet_gateway.gw]
 }
 #  9. Create Ubuntu server and install / enable apache2
